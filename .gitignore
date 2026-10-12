@@ -1,0 +1,18 @@
+# Data and model weights (see README: downloaded, not versioned)
+data/
+weights/
+*.nc
+*.pt
+*.pth
+
+# Training output
+runs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/

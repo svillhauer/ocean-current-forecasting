@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "currentcast"
+version = "0.1.0"
+description = "Probabilistic short-term forecasting of ocean surface currents with a U-Net + ConvLSTM"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Sarah Villhauer" }]
+dependencies = [
+    "torch>=2.1",
+    "numpy",
+    "xarray",
+    "netCDF4",
+    "matplotlib",
+    "pillow",
+]
+
+[project.optional-dependencies]
+data = ["copernicusmarine"]
+dev = ["pytest", "ruff"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/**" = ["E402"]   # matplotlib.use("Agg") must precede pyplot
+
+[tool.ruff.lint.isort]
+known-first-party = ["currentcast"]
